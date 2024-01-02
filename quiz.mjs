@@ -13,6 +13,11 @@ function printQuiz(questions) {
         break;
       case 'text':
         console.log('Answer: _______________');
+        break;
+      case 'range':
+        console.log('Minimum: _______________');
+        console.log('Maximum: _______________');
+        break;
     }
     console.log('');
   });
@@ -31,6 +36,10 @@ const questions = [
   {
     type: 'text',
     description: 'Describe your favorite JS feature.',
+  },
+  {
+    type: 'range',
+    description: 'What is the speed limit in your city?',
   },
 ];
 
