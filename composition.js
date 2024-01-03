@@ -44,6 +44,13 @@ function swimmer({ name }) {
   };
 }
 
+function attackerAndWalker({ name }) {
+  return {
+    attack: () => console.log(`${name} attacker`),
+    walk: () => console.log(`${name} walked`),
+  };
+}
+
 function flyer({ name }) {
   return {
     fly: () => console.log(`${name} flew`),
@@ -55,6 +62,7 @@ function swimmingMonsterCreator(name) {
 
   return {
     ...monster,
+    ...attackerAndWalker(monster),
     ...swimmer(monster),
   };
 }
@@ -64,6 +72,7 @@ function flyingSwimmingMonsterCreator(name) {
 
   return {
     ...monster,
+    ...attackerAndWalker(monster),
     ...swimmer(monster),
     ...flyer(monster),
   };
@@ -77,6 +86,8 @@ function flyingSwimmingMonsterCreator(name) {
 // console.log(obj.name);
 
 const obj = flyingSwimmingMonsterCreator('Monster');
+obj.attack();
+obj.walk();
 obj.swim();
 obj.fly();
 console.log(obj.name);
