@@ -34,12 +34,24 @@ class Stripe {
   }
 }
 
+class PayPalPaymentProcessor {
+  constructor(user) {
+    this.user = user
+    this.paypal = new PayPal();
+  }
+
+  pay(amountInDollars) {
+    this.paypal.makePayment(this.user, amountInDollars);
+  }
+}
+
 class PayPal {
   makePayment(user, amountInDollars) {
     console.log(`${user} made payment of $${amountInDollars} with Paypal`);
   }
 }
 
-const store = new Store(new StripePaymentProcessor('John'));
+// const store = new Store(new StripePaymentProcessor('John'));
+const store = new Store(new PayPalPaymentProcessor('John'));
 store.purchaseBike(2);
 store.purchaseHelmet(2);
