@@ -1,5 +1,12 @@
-class Rectangle {
+class Shape {
+  area() {
+    return this.width * this.height;
+  }
+}
+
+class Rectangle extends Shape {
   constructor(width, height) {
+    super();
     this.width = width;
     this.height = height;
   }
@@ -11,13 +18,15 @@ class Rectangle {
   setHeight(height) {
     this.height = height;
   }
-
-  area() {
-    return this.width * this.height;
-  }
 }
 
-class Square extends Rectangle {
+class Square extends Shape {
+  constructor(width, height) {
+    super();
+    this.width = width;
+    this.height = height;
+  }
+
   setWidth(width) {
     this.width = width;
     this.height = width;
