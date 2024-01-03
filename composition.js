@@ -44,18 +44,39 @@ function swimmer({ name }) {
   };
 }
 
+function flyer({ name }) {
+  return {
+    fly: () => console.log(`${name} flew`),
+  };
+}
+
 function swimmingMonsterCreator(name) {
   const monster = { name: name };
 
   return {
     ...monster,
-    ...swimmer(monster)
-  }
+    ...swimmer(monster),
+  };
+}
+
+function flyingSwimmingMonsterCreator(name) {
+  const monster = { name: name };
+
+  return {
+    ...monster,
+    ...swimmer(monster),
+    ...flyer(monster),
+  };
 }
 
 // const obj = swimmer({ name: 'Test' });
 // obj.swim();
 
-const obj = swimmingMonsterCreator('Monster');
+// const obj = swimmingMonsterCreator('Monster');
+// obj.swim();
+// console.log(obj.name);
+
+const obj = flyingSwimmingMonsterCreator('Monster');
 obj.swim();
+obj.fly();
 console.log(obj.name);
