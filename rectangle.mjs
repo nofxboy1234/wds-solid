@@ -34,10 +34,13 @@ function increaseRectangleWidth(rectangle) {
 }
 
 const rectangle1 = new Rectangle(10, 2);
+const rectangle2 = new Rectangle(5, 5);
 const square = new Square(5, 5);
 
 increaseRectangleWidth(rectangle1);
+increaseRectangleWidth(rectangle2);
 increaseRectangleWidth(square);
 
 console.log(rectangle1.area());
+console.log(rectangle2.area());
 console.log(square.area());
