@@ -1,18 +1,24 @@
 class Store {
-  constructor(user) {
-    this.paypal = new PayPal();
-    this.user = user;
-    // this.stripe = new Stripe(user);
+  constructor(paymentProcessor) {
+    this.paymentProcessor = paymentProcessor;
   }
 
   purchaseBike(quantity) {
-    this.paypal.makePayment(this.user, 200 * quantity);
-    // this.stripe.makePayment(200 * quantity * 100);
+    this.paymentProcessor.pay(200 * quantity);
   }
 
   purchaseHelmet(quantity) {
-    this.paypal.makePayment(this.user, 15 * quantity);
-    // this.stripe.makePayment(15 * quantity * 100);
+    this.paymentProcessor.pay(15 * quantity);
+  }
+}
+
+class StripePaymentProcessor {
+  constructor(user) {
+    this.stripe = new Stripe(user);
+  }
+
+  pay(amountInDollars) {
+    this.stripe.makePayment(amountInDollars * 100);
   }
 }
 
@@ -34,6 +40,6 @@ class PayPal {
   }
 }
 
-const store = new Store('John');
+const store = new Store(new StripePaymentProcessor('John'));
 store.purchaseBike(2);
 store.purchaseHelmet(2);
