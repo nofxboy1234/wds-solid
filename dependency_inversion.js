@@ -41,12 +41,12 @@ class PayPalPaymentProcessor {
   }
 
   pay(amountInDollars) {
-    this.paypal.makePayment(this.user, amountInDollars);
+    this.paypal.transact(this.user, amountInDollars);
   }
 }
 
 class PayPal {
-  makePayment(user, amountInDollars) {
+  transact(user, amountInDollars) {
     console.log(`${user} made payment of $${amountInDollars} with Paypal`);
   }
 }
