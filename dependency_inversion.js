@@ -24,7 +24,11 @@ class Stripe {
   }
 }
 
-class PayPal {}
+class PayPal {
+  makePayment(user, amountInDollars) {
+    console.log(`${user} made payment of $${amountInDollars} with Paypal`);
+  }
+}
 
 const store = new Store('John');
 store.purchaseBike(2);
